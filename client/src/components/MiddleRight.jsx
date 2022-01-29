@@ -29,6 +29,12 @@ const MiddleRight = () => {
       if(response.status===200){
         history("/homeji")
 
+    }else if(response.status===400){
+      alert("Invalid details")
+    }else if(response.status===300){
+      alert("Invalid Details ")
+    }else if(response.status===500){
+      alert("Server Error Sry for inconvience")
     }
 
     }catch(err){

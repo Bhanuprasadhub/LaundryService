@@ -34,9 +34,19 @@ const RegisterNew = () => {
       console.log(response.status)
       if (response.status === 200) {
         //history.push("/")
-        setOpend(true)
+        //setOpend(true)
+        alert("U have registered successfully move to login page")
 
         console.log("sucessfully register")
+      }else if(response.status===405){
+        alert("Invalid Creditinals")
+
+      }else if(response.status===500){
+        alert("Server error soory for inconvinence")
+      }else if(response.status===300){
+        alert("U are already exist move to login")
+      }else if(response.status===304){
+        alert("plz fill all details clearly")
       }
     }
     catch (e) {
@@ -67,14 +77,7 @@ const RegisterNew = () => {
       </div>
       <button onClick={PostData} >Register</button>
     </form>
-    <Modal  classNames={{
-      
-      modal: 'modal-register',
-     
-    }} open={open} onOverlayClick={()=>setOpend(false)} center >
-    <h1>Details has been submitted now move to login page</h1>
-    <NavLink to="/"><button onClick={()=>{setOpend(false)}}>login</button></NavLink>
-    </Modal>
+    
   </div>;
 };
 

@@ -20,13 +20,16 @@ import home from "../assets/home-run (1).svg";
 import addon from "../assets/more (1).svg";
 import list from "../assets/list.svg";
 import search from "../assets/search.svg";
-
+import Modal from "./Modal";
 
 import Tick from "../assets/tick.JPG";
 
 import './Store.css'
+import { set } from "mongoose";
+import { useNavigate } from "react-router-dom";
 
 const Store = () => {
+    let histor=useNavigate()
     const bill = {
         "Washing": 20,
         "Pressing": 15, "Folding": 10, "Chemical-washing": 25
@@ -40,17 +43,12 @@ const Store = () => {
     const [value1, setValue] = useState({
         name1: ""
     })
+    const [modalOpen, setModalOpen] = useState(false);
     const [color, setcolor] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
-
-
-
-
     function change(e) {
         setaction([])
         setcost(0)
         setitem({ ...item, name: e.target.id, quantity: e.target.value })
-
-
     }
     function selectaction(e) {
         const arr = e.target.id.split(' ')
@@ -73,15 +71,18 @@ const Store = () => {
         setcost(washcost)
 
 
+
     }
     function calculate(e) {
+        console.log(action, "action to sahi he")
         item.actions = action;
         setitem(item)
+
         const totalprice = item.quantity * cost
 
         item.price = totalprice
         setitem(item)
-
+        console.log("item to ye hi he", item)
         const express = (item.quantity).toString() + "X" + (cost).toString() + " =  " + (item.quantity * cost).toString()
         expression[parseInt(e.target.id)] = express
         console.log(express)
@@ -120,27 +121,27 @@ const Store = () => {
         console.log(reset)
     }
     const PostData = async (e) => {
-        let sum=0
-        for(let i=0;i<product.length;i++){
-            sum=sum+product[i].price
+        let sum = 0
+        for (let i = 0; i < product.length; i++) {
+            sum = sum + product[i].price
         }
         console.log(sum)
         try {
-           
+
             const response = await fetch("/addOrder", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    order_id:"5",
-                   
-                    details:"deatails is good",
-                    total_quantity:product.length,
+                    order_id: "5",
+
+                    details: "deatails is good",
+                    total_quantity: product.length,
                     total_price: sum,
                     status: "Ready to Pick up",
-                
-                   
+
+
                 })
             })
             console.log(response.status)
@@ -367,23 +368,24 @@ const Store = () => {
                         </div>
                         <div className="modal-footer footer">
                             <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal4" Style="background-color:#5861AE; color:white; margin-right:10px" onClick={() => { PostData() }} >Confirm</button>
-                            {/* <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-                                        <div class="modal-dialog " Style="height: 100vh;">
-                                          <div class="modal-content " Style="width:300px;height: 350px;margin-left: 80px;margin-top: 100px;border-radius: 15px;">
-            
-                                          <div class="modal-body">
-                                            <img src={Tick} alt="Tick" Style="transform:scale(0.3);margin-top:-60px"></img>
-                                            <h3 Style="color:#0A1F44;margin-top: -60px; text-align:center;">Your order is successfully.</h3>
-                                            <p Style="color:#0A1F44;text-align:center;">You can track the delivery in the "Orders" section.</p>
-                                            <button type="button" class="btn " Style="background-color:#5861AE; color:white;border-radius:30px;margin-left:60px;width:150px">Go to orders </button>
-                                          </div>
-                                          </div>
-                                        </div>
-                                      </div> */}
                         </div>
+                        
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog " Style="height: 100vh;">
+              <div class="modal-content " Style="width:300px;height: 350px;margin-left: 80px;margin-top: 100px;border-radius: 15px;">
+
+              <div class="modal-body">
+                <img src={Tick} alt="Tick" Style="transform:scale(0.3);margin-top:-60px"></img>
+                <h3 Style="color:#0A1F44;margin-top: -60px; text-align:center;">Your order is successfully.</h3>
+                <p Style="color:#0A1F44;text-align:center;">You can track the delivery in the "Orders" section.</p>
+                <button type="button" class="btn " Style="background-color:#5861AE; color:white;border-radius:30px;margin-left:60px;width:150px" >Go to orders </button>
+              </div>
+              </div>
+            </div>
+          </div>
 
         </div>
 

@@ -72,10 +72,10 @@ const Order = () => {
 
 
             if (rasio.status === 200) {
-                console.log("yha bhi aayas")
+                
                 callHome()
 
-                console.log("sucessfully register")
+               
             }
 
         } catch (err) {

@@ -40,7 +40,7 @@ router.post('/registers', async (req, res) => {
 
     }
     catch (err) {
-        return res.status(300).json({ status: "failed", message: "err.message" })
+        return res.status(500).json({ status: "failed", message: "err.message" })
     }
 })
 router.post("/login", async (req, res) => {
@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
 
             if (!isCheck) {
 
-                res.status(400).json({ message: "Invalid password" })
+                return res.status(400).json({ message: "Invalid password" })
             } else {
                 token = await userLogin.generateAuthToken()
 
@@ -84,7 +84,7 @@ router.post("/login", async (req, res) => {
     } catch (err) {
         console.log(err)
 
-        return res.status(300).json(({ message: "server error" }))
+        return res.status(500).json(({ message: "server error" }))
 
     }
 })

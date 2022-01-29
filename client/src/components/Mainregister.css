@@ -1,0 +1,46 @@
+.register-container{
+    width: 70%;
+    height: 65.8vh;
+}
+.middle-regi{
+    width: 100%;
+    display: flex;
+  
+}
+.regis-left{
+    width: 30%;
+    background: white
+    
+}
+.regis-left-upper{
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.regis-left-upper h1{
+    font-size: 4rem;
+    color: #5861AE;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.regis-left-lower{
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.regis-left-upper p{
+    font-size: 1.3rem;
+}
+.regis-left-lower p{
+    font-size: 1.3rem;
+}
+.regis-left-lower button{
+    padding: 13px 50px;
+     margin-top: 10px;
+}
+.regis-left-lower button:hover{
+    cursor: pointer;
+}

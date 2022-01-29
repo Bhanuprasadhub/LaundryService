@@ -1,0 +1,30 @@
+23Jan(Day 2)
+*)   P3  - Frontend Architecture Design
+    Task - List down the react components required for Home Page Register and signin page	
+    Apprch - 1st page will have two components 1. Header/login   
+                                                                             2. Register
+                                               
+            After Regiseration user is redirected to login page.
+            In login page if the useriD is not find redirect to registeration page.
+            After login is sucessfull user should redirect to Home page/order page.
+*)   P2  - Frontend Architecture Design
+    Task - List down the react components required for create orders page	
+    Apprch - In CREATE page there will be following components i.e,                                                                                                                                                                                                                   1.opening page (contains order page of user)
+                                                                    2. List of services
+                              
+                              \                                      3. Two button ('Cancel','Proceed')
+                                                                    4. summary (Adress,Detailsof order, contact details)
+                                                                    5.  confirm button
+                                                                    6. Go to orders button
+ *)   P1  - Frontend Architecture Design
+    Task - List down the react components required for past orders page	
+    Apprch - In past orders page there will be following components i.e,                                                                                       1.Status can be change
+                                                                 requests
+                                                                        2. put
+                                                                        3. Delete
+                                                                        4. Get
+                                                                        5.  Push
+                                                                        6. Summary page to view the orders and mae changes
+                                                                        7.Alert("POP") with Proceed button
+ *)  P1, P2, P3  - Frontend Architecture Design
+    Task - Create a sequence diagram which lists the interactions between each of the frontend and backend components
